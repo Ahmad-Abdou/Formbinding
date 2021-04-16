@@ -2,6 +2,7 @@ package com.example.formbinding.controller;
 
 import com.example.formbinding.dto.Customer;
 
+import com.example.formbinding.dto.CustomerDetails;
 import com.example.formbinding.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Controller
@@ -45,11 +47,11 @@ public class Home {
         return "home";
     }
 
+
     @PostMapping("/account/post/")
     public String post(@ModelAttribute("customer") Customer customer){
-        System.out.println(customer);
-
        customerService.saveOrUpdate(customer);
         return "redirect:/accountInfo";
     }
+
 }

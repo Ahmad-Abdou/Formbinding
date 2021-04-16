@@ -1,10 +1,12 @@
 package com.example.formbinding.services;
 
 import com.example.formbinding.dto.Customer;
+import com.example.formbinding.dto.CustomerDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -15,7 +17,10 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public Customer saveOrUpdate(Customer customer) {
         Customer customer1 = new Customer();
+          customer1.setCustomerId(customer.getDetails().getDetailsId());
           customer1.setEmail(customer.getEmail());
+          customer1.setDetails(customer.getDetails());
+          customerList.add(customer1);
         return customer1;
     }
 

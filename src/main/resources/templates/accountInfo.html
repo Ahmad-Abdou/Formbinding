@@ -24,13 +24,22 @@
 </div>
 <div th:unless="${customerList.isEmpty()}">
 <h1 style="align-items: center; color: #e8716d" class="text-center" >Account has been created</h1>
-<div  class="card" style="margin-left: 500px; width: 900px">
-  <div th:each="customer : ${customerList}" class="card-header text-center"><h5 >Account Details</h5>
-    <div class="card-footer border border-danger" style="margin-top: 1px"><h4 th:text="${customer.id}">ID  : </h4></div>
-  <div class="card-footer border border-danger" style="margin-top: 1px"><h4 th:text="${customer.email}">Email  : </h4></div>
-  <div class="card-body border border-primary"style="margin-top: 1px" ><h4 th:text="${customer.regDate}">regDate : </h4></div>
-  <div class="card-footer border border-primary" style="margin-top: 1px"><h4 th:text="${customer.active}">Active  : </h4></div>
-  <div class="card-footer border border-danger" style="margin-top: 1px"><h4 th:text="${customer.details}">Details  : </h4></div>
+<div  class="card bg-dark" style="margin-left: 500px; width: 900px">
+  <div th:each="customer : ${customerList}" class="card-header text-center"><h1 class="text-white">Personal Information</h1>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">ID </h5><h4 th:text="${customer.customerId}"> </h4></div>
+  <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">Email </h5><h4 th:text="${customer.email}"> </h4></div>
+  <div class="card-body bg-white"style="margin-top: 1px" ><h5 class="text-danger">Registration Date </h5><h4 th:text="${customer.regDate}"> </h4></div>
+  <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">Active </h5><h4 class="text-success" th:text="${customer.active}"></h4></div>
+
+    <h1 class="text-white text-danger">Account Details</h1>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">City </h5><h4 th:text="${customer.details.detailsId}"></h4></div>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">City </h5><h4 th:text="${customer.details.city}"></h4></div>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">Street </h5><h4 th:text="${customer.details.street}"> </h4></div>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">ZipCode </h5><h4 th:text="${customer.details.zipCode}"> </h4></div>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">HomePhone </h5><h4 th:text="${customer.details.homePhone}"></h4></div>
+    <div class="card-footer bg-white" style="margin-top: 1px"><h5 class="text-danger">CellPhone </h5><h4 th:text="${customer.details.cellPhone}"></h4></div>
+
+
 </div>
 </div>
 </div>
