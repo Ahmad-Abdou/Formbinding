@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>navbar</title>
+  <title>Account Info</title>
 
   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -18,18 +18,21 @@
     }
   </style>
 </head>
-<body th:if="${customerList.isEmpty()}">
-<h1 class="text-center">No account has been created yet..</h1>
+<body >
+<div th:if="${customerList.isEmpty()}">
+  <h1 class="text-center">No account has been created yet..</h1>
+</div>
 <div th:unless="${customerList.isEmpty()}">
 <h1 style="align-items: center; color: #e8716d" class="text-center" >Account has been created</h1>
 <div  class="card" style="margin-left: 500px; width: 900px">
-  <div th:each="customer : ${customerList}" class="card-header text-center"><h5 >Account Details</h5></div>
+  <div th:each="customer : ${customerList}" class="card-header text-center"><h5 >Account Details</h5>
+    <div class="card-footer border border-danger" style="margin-top: 1px"><h4 th:text="${customer.id}">ID  : </h4></div>
   <div class="card-footer border border-danger" style="margin-top: 1px"><h4 th:text="${customer.email}">Email  : </h4></div>
   <div class="card-body border border-primary"style="margin-top: 1px" ><h4 th:text="${customer.regDate}">regDate : </h4></div>
   <div class="card-footer border border-primary" style="margin-top: 1px"><h4 th:text="${customer.active}">Active  : </h4></div>
   <div class="card-footer border border-danger" style="margin-top: 1px"><h4 th:text="${customer.details}">Details  : </h4></div>
 </div>
 </div>
-
+</div>
 </body>
 </html>

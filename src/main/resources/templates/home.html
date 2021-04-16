@@ -5,11 +5,12 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-<!--<link rel="stylesheet" href="/css/stylesheet.css">-->
-<link rel="stylesheet" href="/css/stylesheet2.css">
 
-
+<link rel="stylesheet" href="/css/home.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
+
     <meta charset="UTF-8">
     <title>home</title>
 </head>
@@ -20,66 +21,62 @@
 </header>
 <h1 class="text-center">Home Page</h1>
 
-<section class="user">
-    <div class="user_options-container">
-        <div class="user_options-text">
-            <div class="user_options-unregistered">
-                <h2 class="user_unregistered-title">Don't have an account?</h2>
-                <p class="user_unregistered-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
-                <button class="user_unregistered-signup" id="signup-button">Sign up</button>
-            </div>
-
-            <div class="user_options-registered">
-                <h2 class="user_registered-title">Have an account?</h2>
-                <p class="user_registered-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
-                <button class="user_registered-login" id="login-button" >Login</button>
-            </div>
-        </div>
-
-        <div class="user_options-forms" id="user_options-forms">
-            <div class="user_forms-login">
-                <h2 class="forms_title">Login</h2>
-                <form class="forms_form" th:action="@{/account/post/}" method="post" >
-                    <fieldset class="forms_fieldset">
-                        <div class="forms_field">
-                            <input type="email" placeholder="Email"  class="forms_field-input" id="email" required autofocus />
-                        </div>
-                        <div class="forms_field">
-                            <input type="password" placeholder="Password" class="forms_field-input" required />
-                        </div>
-                    </fieldset>
-                    <div class="forms_buttons">
-                        <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                        <input type="submit" value="Log In" class="forms_buttons-action">
-                    </div>
-                </form>
-            </div>
-            <div class="user_forms-signup">
-                <h2 class="forms_title">Sign Up</h2>
-                <form class="forms_form">
-                    <fieldset class="forms_fieldset">
-                        <div class="forms_field">
-                            <input type="text" placeholder="Full Name" class="forms_field-input" required />
-                        </div>
-                        <div class="forms_field">
-                            <input type="email" placeholder="Email" class="forms_field-input" required />
-                        </div>
-                        <div class="forms_field">
-                            <input type="password" placeholder="Password" class="forms_field-input" required />
-                        </div>
-                    </fieldset>
-                    <div class="forms_buttons">
-                        <input type="submit" value="Sign up" class="forms_buttons-action" >
-                    </div>
-                </form>
-            </div>
-        </div>
+<br>
+<br>
+<div class="sign-up-modal">
+    <div id="close-modal-button">
     </div>
-</section>
+
+    <div class="logo-container">
+        <svg class="logo" width="94.4px" height="56px">
+            <g>
+                <polygon points="49.3,56 49.3,0 0,28 	" />
+                <path d="M53.7,3.6v46.3l40.7-23.2L53.7,3.6z M57.7,10.6l28.4,16.2L57.7,42.9V10.6z" />
+            </g>
+        </svg>
+    </div>
 
 
+    <form class="details" th:action="@{/account/post/}" method="post" th:object="${customer}">
+        <div class="input-container" style="margin-bottom: -70px">
+            <input class="col-sm-12 email-input with-placeholder" name="email" th:field="*{email}" type="email" placeholder="Email" />
+        </div>
+
+
+        <div class="dropdown" >
+                <input  class="btn btn-primary dropdown-toggle" type="submit" value="Customer Details" data-toggle="dropdown" style="margin-top: 70px">
+            <div class="dropdown-menu bg-dark" style="margin-right: 550px" >
+               <form style=" margin-top: 600px; ">
+                   <div class="card bg-dark" style="width: 800px">
+                    <h3 class="text-white text-center card-header ">Account details</h3>
+                       <label class="text-white"> City
+                           <input class=" w-100 border border-white bg-white" name="street" th:field="*{details.city}" style="padding: 10px" type="text"  />
+                       </label>
+                       <label class="text-white"> Street
+                       <input class=" w-100 border border-white bg-white" name="street" th:field="*{details.street}" style="padding: 10px" type="text"  />
+                       </label>
+                       <label class="text-white">
+                           ZipCode
+                           <input class=" w-100 border border-white bg-white" name="zipcode" th:field="*{details.zipCode}" style="padding: 10px" type="number"  />
+                       </label>
+                       <label class="text-white"> HomePhone
+                           <input class=" w-100 border border-white bg-white"  th:field="*{details.homePhone}"style="padding: 10px" type="number"  />
+                       </label>
+                       <label class="text-white"> CellPhone
+                           <input class=" w-100 border border-white bg-white" th:field="*{details.cellPhone}" style="padding: 10px" type="number"  />
+                       </label>
+                   </div>
+                   <input type="submit" class="btn btn-danger text-white w-25 bg-danger "  style="margin-left: 300px"  value="Register" />
+               </form>
+            </div>
+        </div>
+        <input id="sign-up-button" type="submit" value="Register"  style="margin-top: 70px;margin-left: 210px">
+
+    </form>
+
+</div>
 <footer th:insert="fragments/footer" ::footer></footer>
-<script type="text/javascript" src="js/script.js"></script>
 
+<script src="/js/home.js"></script>
 </body>
 </html>
