@@ -1,12 +1,10 @@
 package com.example.formbinding.services;
 
 import com.example.formbinding.dto.Customer;
-import com.example.formbinding.dto.CustomerDetails;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+
 
 
 @Service
@@ -26,20 +24,17 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public List<Customer> getAll() {
-
         return customerList;
     }
 
     @Override
     public List<Customer> findByEmail(String email) {
         List<Customer> customers = new ArrayList<>();
-
         for(Customer customer1 : customerList){
-            if(customer1.getEmail() == email){
+            if(customer1.getEmail().equals(email) ){
                 customers.add(customer1);
             }
         }
-
         return customers;
     }
 }

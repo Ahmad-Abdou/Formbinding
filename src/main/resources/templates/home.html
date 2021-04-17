@@ -38,38 +38,32 @@
 
 
     <form class="details was-validated" th:action="@{/account/post/}" method="post" th:object="${customer}" >
-        <div class="input-container" style="margin-bottom: -70px">
-            <input class="col-sm-12 email-input with-placeholder" name="email" th:field="*{email}" type="email" placeholder="Email" required/>
-        </div>
 
-        <div class="dropdown" style="margin-top: 50px" required>
-                <input  class="btn btn-primary dropdown-toggle" type="submit" value="Customer Details" data-toggle="dropdown" style="margin-top: 70px" required>
-            <div class="dropdown-menu bg-dark" style="margin-right: 550px" >
-               <form style=" margin-top: 600px; "  >
-                   <div class="card bg-dark" style="width: 800px">
-                    <h3 class="text-white text-center card-header " >Account details</h3>
-                       <label class="text-white"> City
-                           <input class=" w-100 border border-white bg-white" name="city" th:field="*{details.city}" style="padding: 10px" type="text" required  />
-                       </label>
-                       <label class="text-white"> Street
-                       <input class=" w-100 border border-white bg-white" name="street" th:field="*{details.street}" style="padding: 10px" type="text" required />
-                       </label>
-                       <label class="text-white">
-                           ZipCode
-                           <input class=" w-100 border border-white bg-white" name="zipcode" th:field="*{details.zipCode}" style="padding: 10px" type="number" required />
-                       </label>
-                       <label class="text-white"> HomePhone
-                           <input class=" w-100 border border-white bg-white"  th:field="*{details.homePhone}"style="padding: 10px" type="number" required />
-                       </label>
-                       <label class="text-white"> CellPhone
-                           <input class=" w-100 border border-white bg-white" th:field="*{details.cellPhone}" style="padding: 10px" type="number" required />
-                       </label>
-                   </div>
-                   <input type="submit" class="btn btn-danger text-white w-25 bg-danger "  style="margin-left: 300px"  value="Register" required/>
-               </form>
-            </div>
-            <input id="sign-up-button" type="submit" value="Register"  style="margin-top: 70px;">
-        </div>
+            <input class="col-sm-12 email-input with-placeholder" name="email" th:field="*{email}" type="email" placeholder="Email" />
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors = "*{email}"></p>
+
+
+            <input class=" col-sm-12 email-input with-placeholder" name="city" th:field="*{details.city}" style="padding: 10px" type="text" placeholder="City"  />
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('details.city')}" th:errors = "*{details.city}"></p>
+
+            <input class=" col-sm-12 email-input with-placeholder" name="street" th:field="*{details.street}" style="padding: 10px" type="text" placeholder="Street"/>
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('details.street')}" th:errors = "*{details.street}"></p>
+
+
+            <input class=" col-sm-12 email-input with-placeholder" name="zipcode" th:field="*{details.zipCode}" style="padding: 10px" type="text" placeholder="ZipCode" />
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('details.zipCode')}" th:errors = "*{details.zipCode}"></p>
+
+
+            <input class=" col-sm-12 email-input with-placeholder"  th:field="*{details.homePhone}"style="padding: 10px" type="text" placeholder="Home phone" />
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('details.homePhone')}" th:errors = "*{details.homePhone}"></p>
+
+
+            <input class=" col-sm-12 email-input with-placeholder" th:field="*{details.cellPhone}" style="padding: 10px" type="text" placeholder="++46" />
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('details.cellPhone')}" th:errors = "*{details.cellPhone}"></p>
+
+
+      <input type="submit" class="btn btn-danger text-white  bg-danger "   value="Register" />
+
 
     </form>
 
